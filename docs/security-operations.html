@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Operations Center - Paul Mulenga</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .soc-content {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 2rem;
+        }
+        .security-dashboard {
+            background: rgba(0, 20, 0, 0.3);
+            border: 1px solid var(--primary-color);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .alert-panel {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+        }
+        .threat-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .metric-box {
+            background: rgba(0, 20, 0, 0.3);
+            border: 1px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .incident-log {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+        }
+        .log-entry {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-left: 3px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="soc-content">
+        <h1 class="glitch" data-text="Security Operations Center">Security Operations Center</h1>
+        
+        <div class="security-dashboard">
+            <h2>Security Monitoring Overview</h2>
+            
+            <div class="threat-metrics">
+                <div class="metric-box">
+                    <h3>Threats Detected</h3>
+                    <p class="stat-value">247</p>
+                    <p>Last 30 days</p>
+                </div>
+                <div class="metric-box">
+                    <h3>Average Response Time</h3>
+                    <p class="stat-value">3.5min</p>
+                    <p>To critical alerts</p>
+                </div>
+                <div class="metric-box">
+                    <h3>Security Score</h3>
+                    <p class="stat-value">94%</p>
+                    <p>AWS Security Hub</p>
+                </div>
+            </div>
+
+            <div class="alert-panel">
+                <h3><i class="fas fa-shield-alt"></i> Security Controls</h3>
+                <ul>
+                    <li>AWS GuardDuty for threat detection</li>
+                    <li>Custom Lambda functions for automated response</li>
+                    <li>Security Hub for centralized security management</li>
+                    <li>CloudWatch for log analysis and alerting</li>
+                    <li>AWS Config for compliance monitoring</li>
+                </ul>
+            </div>
+
+            <div class="alert-panel">
+                <h3><i class="fas fa-code-branch"></i> Incident Response Pipeline</h3>
+                <ol>
+                    <li>Threat Detection (GuardDuty/Custom Rules)</li>
+                    <li>Alert Aggregation (EventBridge)</li>
+                    <li>Automated Response (Lambda)</li>
+                    <li>Human Review (if needed)</li>
+                    <li>Resolution & Documentation</li>
+                </ol>
+            </div>
+
+            <h3>Recent Security Incidents</h3>
+            <div class="incident-log">
+                <div class="log-entry">
+                    [2024-12-13 10:15:23] ALERT: Unusual API activity detected from IP 203.0.113.42
+                    - Action: Automatically blocked IP and notified security team
+                    - Resolution: Confirmed unauthorized access attempt, IP added to blocklist
+                </div>
+                <div class="log-entry">
+                    [2024-12-13 09:30:15] WARNING: Multiple failed login attempts
+                    - Action: Implemented additional MFA requirements
+                    - Resolution: Account secured, no compromise detected
+                </div>
+                <div class="log-entry">
+                    [2024-12-13 08:45:32] INFO: Security patch deployment completed
+                    - Action: Automated patch management system execution
+                    - Status: All systems updated successfully
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-panel">
+            <h3>Automated Response Example</h3>
+            <div class="code-block">
+                <pre><code>def lambda_handler(event, context):
+    # Parse GuardDuty finding
+    finding = event['detail']['findings'][0]
+    threat_level = finding['Severity']
+    
+    if threat_level >= 7:
+        # High severity threat
+        block_ip(finding['Source']['IpAddress'])
+        notify_security_team(finding)
+        create_security_ticket(finding)
+    
+    # Log incident
+    log_security_event(finding)
+    
+    return {
+        'statusCode': 200,
+        'body': 'Incident handled successfully'
+    }</code></pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

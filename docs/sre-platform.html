@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRE Monitoring Platform - Paul Mulenga</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .sre-content {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 2rem;
+        }
+        .monitoring-dashboard {
+            background: rgba(0, 20, 0, 0.3);
+            border: 1px solid var(--primary-color);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .slo-panel {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+        }
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .metric-box {
+            background: rgba(0, 20, 0, 0.3);
+            border: 1px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .alert-rules {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="sre-content">
+        <h1 class="glitch" data-text="SRE Monitoring Platform">SRE Monitoring Platform</h1>
+        
+        <div class="monitoring-dashboard">
+            <h2>System Reliability Overview</h2>
+            
+            <div class="performance-metrics">
+                <div class="metric-box">
+                    <h3>Service Availability</h3>
+                    <p class="stat-value">99.99%</p>
+                    <p>Last 30 days</p>
+                </div>
+                <div class="metric-box">
+                    <h3>Error Budget</h3>
+                    <p class="stat-value">82%</p>
+                    <p>Remaining</p>
+                </div>
+                <div class="metric-box">
+                    <h3>MTTR</h3>
+                    <p class="stat-value">15min</p>
+                    <p>Average recovery time</p>
+                </div>
+            </div>
+
+            <div class="slo-panel">
+                <h3><i class="fas fa-bullseye"></i> Service Level Objectives (SLOs)</h3>
+                <ul>
+                    <li>Availability: 99.95% uptime</li>
+                    <li>Latency: P95 < 200ms</li>
+                    <li>Error Rate: < 0.1%</li>
+                    <li>Throughput: 1000 RPS sustained</li>
+                </ul>
+            </div>
+
+            <div class="slo-panel">
+                <h3><i class="fas fa-chart-line"></i> Monitoring Stack</h3>
+                <ul>
+                    <li>Prometheus for metrics collection</li>
+                    <li>Grafana for visualization</li>
+                    <li>AlertManager for alerting</li>
+                    <li>Custom exporters for application metrics</li>
+                    <li>ELK Stack for log aggregation</li>
+                </ul>
+            </div>
+
+            <h3>Prometheus Alert Rules</h3>
+            <div class="alert-rules">
+                <pre><code>groups:
+- name: availability
+  rules:
+  - alert: HighErrorRate
+    expr: |
+      sum(rate(http_requests_total{status=~"5.."}[5m]))
+      /
+      sum(rate(http_requests_total[5m])) > 0.001
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: High HTTP error rate
+      description: Error rate is above 0.1% for 5 minutes
+
+  - alert: HighLatency
+    expr: |
+      histogram_quantile(0.95, 
+        sum(rate(http_request_duration_seconds_bucket[5m])) by (le)
+      ) > 0.2
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: High latency detected
+      description: P95 latency is above 200ms for 5 minutes</code></pre>
+            </div>
+
+            <div class="slo-panel">
+                <h3><i class="fas fa-robot"></i> Automated Remediation</h3>
+                <p>Example of automated scaling based on metrics:</p>
+                <div class="code-block">
+                    <pre><code>apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: api-autoscaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api-deployment
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Pods
+    pods:
+      metric:
+        name: http_requests_per_second
+      target:
+        type: AverageValue
+        averageValue: 1000</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

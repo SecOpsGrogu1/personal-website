@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Trust Network Architecture - Paul Mulenga</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .zero-trust-content {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 2rem;
+        }
+        .architecture-section {
+            background: rgba(0, 20, 0, 0.3);
+            border: 1px solid var(--primary-color);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .security-component {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+        }
+        .security-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .metric-box {
+            background: rgba(0, 20, 0, 0.3);
+            border: 1px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .code-example {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+        }
+        .security-flow {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+        }
+        .flow-step {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="zero-trust-content">
+        <h1 class="glitch" data-text="Zero Trust Network Architecture">Zero Trust Network Architecture</h1>
+        
+        <div class="architecture-section">
+            <h2>Zero Trust Implementation Overview</h2>
+            
+            <div class="security-metrics">
+                <div class="metric-box">
+                    <h3>Security Score</h3>
+                    <p class="stat-value">96%</p>
+                    <p>CIS Benchmark</p>
+                </div>
+                <div class="metric-box">
+                    <h3>Access Requests</h3>
+                    <p class="stat-value">50K+</p>
+                    <p>Daily verified</p>
+                </div>
+                <div class="metric-box">
+                    <h3>Threat Prevention</h3>
+                    <p class="stat-value">99.9%</p>
+                    <p>Success rate</p>
+                </div>
+            </div>
+
+            <div class="security-component">
+                <h3><i class="fas fa-shield-alt"></i> Core Principles</h3>
+                <ul>
+                    <li>Never Trust, Always Verify</li>
+                    <li>Least Privilege Access</li>
+                    <li>Assume Breach Mentality</li>
+                    <li>Explicit Trust Verification</li>
+                    <li>Identity-based Security</li>
+                </ul>
+            </div>
+
+            <div class="security-component">
+                <h3><i class="fas fa-layer-group"></i> Architecture Components</h3>
+                <ul>
+                    <li>Identity Provider (Azure AD)</li>
+                    <li>Access Proxy (CloudFlare Zero Trust)</li>
+                    <li>Policy Engine (Custom + AWS IAM)</li>
+                    <li>Secret Management (HashiCorp Vault)</li>
+                    <li>Network Segmentation (AWS Security Groups + NACLs)</li>
+                </ul>
+            </div>
+
+            <h3>Authentication Flow</h3>
+            <div class="security-flow">
+                <div class="flow-step">
+                    <h4>1. Identity Verification</h4>
+                    <p>Multi-factor authentication using Azure AD with hardware security keys</p>
+                </div>
+                <div class="flow-step">
+                    <h4>2. Device Trust</h4>
+                    <p>Device certificate validation and security posture assessment</p>
+                </div>
+                <div class="flow-step">
+                    <h4>3. Access Context</h4>
+                    <p>Evaluation of user context, location, and risk score</p>
+                </div>
+                <div class="flow-step">
+                    <h4>4. Policy Enforcement</h4>
+                    <p>Real-time policy evaluation and access decision</p>
+                </div>
+            </div>
+
+            <div class="security-component">
+                <h3><i class="fas fa-code"></i> IAM Policy Example</h3>
+                <div class="code-example">
+                    <pre><code>{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::my-bucket",
+                "arn:aws:s3:::my-bucket/*"
+            ],
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "true"
+                },
+                "StringEquals": {
+                    "aws:PrincipalTag/Department": "Engineering"
+                },
+                "IpAddress": {
+                    "aws:SourceIp": ["10.0.0.0/16"]
+                }
+            }
+        }
+    ]
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="security-component">
+                <h3><i class="fas fa-network-wired"></i> Network Segmentation</h3>
+                <p>Implementation of micro-segmentation using:</p>
+                <ul>
+                    <li>AWS Transit Gateway for network isolation</li>
+                    <li>Security groups for granular access control</li>
+                    <li>NACLs for subnet-level security</li>
+                    <li>VPC endpoints for AWS service access</li>
+                    <li>Private Link for service-to-service communication</li>
+                </ul>
+            </div>
+
+            <div class="security-component">
+                <h3><i class="fas fa-key"></i> Secret Management with Vault</h3>
+                <div class="code-example">
+                    <pre><code># Vault policy for application access
+path "secret/data/app/*" {
+    capabilities = ["read"]
+    
+    condition "cidr" {
+        rules = "ip.addr in 10.0.0.0/16"
+    }
+    
+    condition "identity" {
+        rules = "identity.entity.metadata.team == 'engineering'"
+    }
+}
+
+# Dynamic AWS credentials
+path "aws/creds/engineering-role" {
+    capabilities = ["read"]
+    
+    condition "mfa" {
+        rules = "identity.mfa.method_types contains 'totp'"
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

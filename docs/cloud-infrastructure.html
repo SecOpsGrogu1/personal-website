@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Infrastructure Architecture - Paul Mulenga</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .architecture-content {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 2rem;
+        }
+        .architecture-diagram {
+            background: rgba(0, 20, 0, 0.3);
+            border: 1px solid var(--primary-color);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .component {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .metric-card {
+            background: rgba(0, 20, 0, 0.3);
+            border: 1px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .code-block {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="architecture-content">
+        <h1 class="glitch" data-text="Cloud Infrastructure Architecture">Cloud Infrastructure Architecture</h1>
+        
+        <div class="architecture-diagram">
+            <h2>High-Level Architecture</h2>
+            <div class="component">
+                <h3><i class="fas fa-cloud"></i> Multi-Region Setup</h3>
+                <p>Our infrastructure spans multiple AWS regions for high availability:</p>
+                <ul>
+                    <li>Primary Region: us-east-1 (N. Virginia)</li>
+                    <li>DR Region: us-west-2 (Oregon)</li>
+                    <li>Edge Locations: CloudFront distribution across 15+ locations</li>
+                </ul>
+            </div>
+
+            <div class="component">
+                <h3><i class="fas fa-network-wired"></i> Networking</h3>
+                <p>VPC Architecture:</p>
+                <ul>
+                    <li>Multiple Availability Zones (3 per region)</li>
+                    <li>Public and Private subnets</li>
+                    <li>Transit Gateway for inter-VPC communication</li>
+                    <li>VPC Endpoints for AWS services</li>
+                </ul>
+            </div>
+
+            <div class="component">
+                <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                <p>Security Implementation:</p>
+                <ul>
+                    <li>AWS WAF for web application protection</li>
+                    <li>GuardDuty for threat detection</li>
+                    <li>AWS Shield for DDoS protection</li>
+                    <li>Security Hub for security posture management</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="metrics">
+            <div class="metric-card">
+                <h3>Uptime</h3>
+                <p class="stat-value">99.99%</p>
+                <p>Last 12 months</p>
+            </div>
+            <div class="metric-card">
+                <h3>Cost Optimization</h3>
+                <p class="stat-value">40%</p>
+                <p>Reduction in cloud costs</p>
+            </div>
+            <div class="metric-card">
+                <h3>Response Time</h3>
+                <p class="stat-value">&lt;100ms</p>
+                <p>Average API response</p>
+            </div>
+        </div>
+
+        <div class="component">
+            <h3>Infrastructure as Code Example</h3>
+            <div class="code-block">
+                <pre><code># Terraform configuration for high-availability setup
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+  version = "3.2.0"
+
+  name = "production-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+
+  enable_nat_gateway = true
+  enable_vpn_gateway = true
+
+  tags = {
+    Environment = "production"
+    Terraform   = "true"
+  }
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
