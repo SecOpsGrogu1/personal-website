@@ -1,14 +1,15 @@
-# Paul Mulenga's Personal Website
+# Personal Website
 
-A modern, cybersecurity-themed personal website showcasing my experience as a Cloud Engineer, Site Reliability Engineer, and Cloud Security Specialist.
+A modern, interactive personal website showcasing Cloud Engineering, Site Reliability Engineering, and Cloud Security expertise. Features a unique "hacking simulation" game that demonstrates web security concepts in an engaging way.
 
 ## Features
 
-- Modern, responsive design with cybersecurity aesthetics
-- Interactive terminal-style animations
-- Project documentation with technical details
-- Real-time security metrics display
-- Mobile-friendly interface
+- Responsive design with modern UI/UX
+- Interactive skills and projects showcase
+- Cybersecurity-themed animations and effects
+- Contact form with security features
+- Fun hacking simulation game
+- Cloud and DevOps focused content
 
 ## Project Structure
 
@@ -26,20 +27,19 @@ personal-website/
 
 ## Technologies Used
 
-- HTML5
-- CSS3 (with modern animations)
-- JavaScript (vanilla)
-- Font Awesome for icons
-- Google Fonts (Poppins)
+- HTML5/CSS3
+- JavaScript (ES6+)
+- Formspree for contact form
+- GitHub Pages for hosting
+- Custom animations and effects
 
 ## Local Development
 
-To run this website locally:
-
 1. Clone the repository
 2. Open `index.html` in your browser
-3. No build process required!
+3. Make changes and test locally
+4. Push changes to deploy
 
 ## License
 
-MIT License - feel free to use this template for your own personal website!
+MIT License - See LICENSE file for details
