@@ -15,8 +15,10 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#hack-game">Hack Game</a></li>
             </ul>
             <div class="menu-btn">
                 <div class="menu-btn__burger"></div>
@@ -92,6 +94,72 @@
         </div>
     </section>
 
+    <section id="skills" class="terminal-section">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="terminal-title">skills.sh</div>
+            </div>
+            <div class="terminal-body">
+                <div class="command-line">
+                    <span class="prompt">$</span> <span class="command">cat technical_skills.yml</span>
+                </div>
+                <div class="output">
+                    <div class="skill-category">
+                        <h4>Infrastructure & Orchestration:</h4>
+                        <ul>
+                            <li>Kubernetes (EKS, AKS, GKE)</li>
+                            <li>Terraform & Infrastructure as Code</li>
+                            <li>Docker & Containerization</li>
+                            <li>AWS Cloud Services</li>
+                            <li>Azure Cloud Platform</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Security & Compliance:</h4>
+                        <ul>
+                            <li>Wiz Cloud Security</li>
+                            <li>Container Security</li>
+                            <li>IAM & RBAC</li>
+                            <li>Compliance Automation</li>
+                            <li>Vulnerability Management</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Monitoring & Observability:</h4>
+                        <ul>
+                            <li>Datadog APM</li>
+                            <li>Grafana Dashboards</li>
+                            <li>Prometheus Metrics</li>
+                            <li>ELK Stack</li>
+                            <li>Distributed Tracing</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>DevOps & Automation:</h4>
+                        <ul>
+                            <li>GitOps (ArgoCD, Flux)</li>
+                            <li>CI/CD Pipelines</li>
+                            <li>Infrastructure Automation</li>
+                            <li>Configuration Management</li>
+                            <li>Shell Scripting</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="command-line">
+                    <span class="prompt">$</span> <span class="cursor">|</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="projects" class="projects">
         <h2 class="section-title">Mission Control Center</h2>
         <div class="project-grid">
@@ -100,11 +168,11 @@
                     <div class="project-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                 </div>
                 <h3>Cloud Infrastructure Automation</h3>
-                <p>Implemented infrastructure as code using Terraform and AWS CloudFormation, achieving 99.99% uptime and 40% cost reduction through automated scaling.</p>
+                <p>Implemented infrastructure as code using Terraform and AWS CloudFormation, with Kubernetes (EKS) orchestration and GitOps practices.</p>
                 <ul class="project-highlights">
                     <li>Infrastructure as Code (Terraform)</li>
-                    <li>AWS Architecture Design</li>
-                    <li>Automated Scaling Solutions</li>
+                    <li>Kubernetes (EKS) Management</li>
+                    <li>GitOps & ArgoCD Implementation</li>
                 </ul>
                 <div class="project-links">
                     <a href="docs/cloud-infrastructure.html" class="btn small">View Architecture</a>
@@ -117,9 +185,9 @@
                     <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
                 </div>
                 <h3>Security Operations Center</h3>
-                <p>Designed and implemented a comprehensive cloud security monitoring system using AWS GuardDuty, Security Hub, and custom Lambda functions.</p>
+                <p>Designed a comprehensive cloud security system using Wiz, AWS GuardDuty, and Security Hub with automated incident response.</p>
                 <ul class="project-highlights">
-                    <li>Real-time Threat Detection</li>
+                    <li>Wiz Cloud Security Platform</li>
                     <li>Automated Incident Response</li>
                     <li>Compliance Monitoring</li>
                 </ul>
@@ -133,12 +201,12 @@
                 <div class="project-image">
                     <div class="project-icon"><i class="fas fa-chart-line"></i></div>
                 </div>
-                <h3>SRE Monitoring Platform</h3>
-                <p>Built a comprehensive monitoring and alerting system using Prometheus, Grafana, and custom exporters for microservices architecture.</p>
+                <h3>Observability Platform</h3>
+                <p>Built an enterprise observability stack using Datadog, Grafana, and Prometheus for comprehensive system monitoring and alerting.</p>
                 <ul class="project-highlights">
-                    <li>SLO/SLI Implementation</li>
-                    <li>Custom Metrics Pipeline</li>
-                    <li>Automated Remediation</li>
+                    <li>Datadog Integration</li>
+                    <li>Grafana Dashboards</li>
+                    <li>Prometheus Metrics</li>
                 </ul>
                 <div class="project-links">
                     <a href="docs/sre-platform.html" class="btn small">View Dashboard</a>
@@ -151,11 +219,11 @@
                     <div class="project-icon"><i class="fas fa-network-wired"></i></div>
                 </div>
                 <h3>Zero Trust Network Architecture</h3>
-                <p>Implemented a zero trust security model across multi-cloud infrastructure using AWS IAM, Azure AD, and HashiCorp Vault.</p>
+                <p>Implemented zero trust security across multi-cloud Kubernetes clusters using service mesh and identity-aware proxies.</p>
                 <ul class="project-highlights">
-                    <li>Identity Management</li>
-                    <li>Secret Management</li>
-                    <li>Network Segmentation</li>
+                    <li>Kubernetes Network Policies</li>
+                    <li>Service Mesh Security</li>
+                    <li>Identity-based Access</li>
                 </ul>
                 <div class="project-links">
                     <a href="docs/zero-trust-network.html" class="btn small">View Design</a>
@@ -165,29 +233,87 @@
         </div>
     </section>
 
-    <div class="contact-section" id="contact">
+    <section id="hack-game" class="hack-section">
+        <div class="hack-container">
+            <button id="start-hack" class="btn danger pulse">🎮 Click to Play Hacker Game!</button>
+            <div id="hack-simulation" style="display: none;">
+                <div class="browser-window">
+                    <div class="browser-bar">
+                        <div class="browser-controls">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="url-bar">
+                            <span class="protocol">https://</span>
+                            <span class="domain">paulops.com</span>
+                            <span class="lock-icon">🔒</span>
+                        </div>
+                    </div>
+                    <div class="browser-content">
+                        <div id="hack-progress">
+                            <div class="progress-step">
+                                <div class="loader"></div>
+                                <span class="status">Analyzing website vulnerabilities...</span>
+                            </div>
+                        </div>
+                        <div id="hack-alerts"></div>
+                        <div id="hack-result" class="hack-result" style="display: none;">
+                            <div class="alert alert-danger">
+                                <h3 class="glitch" data-text="ACCESS GRANTED!">ACCESS GRANTED!</h3>
+                                <div class="matrix-rain"></div>
+                                <div class="message-container">
+                                    <p class="hacker-message">🎮 Game Over - You've Found The Secret Level! 🎯</p>
+                                    <p class="hacker-message">Since you're interested in Cloud Security, check out my credentials:</p>
+                                    <div class="achievement-badges">
+                                        <span class="badge">🔒 AWS Security Specialist</span>
+                                        <span class="badge">🛡️ Azure Defender</span>
+                                        <span class="badge">🔐 K8s Security Pro</span>
+                                        <span class="badge">🚀 DevSecOps Engineer</span>
+                                    </div>
+                                    <p class="hacker-message">Ready to level up your security team?</p>
+                                    <div class="hack-buttons">
+                                        <a href="mailto:your-email@example.com" class="btn primary glow">
+                                            <i class="fas fa-user-shield"></i> Hire Your Next Security Expert
+                                        </a>
+                                        <a href="https://www.buymeacoffee.com/your-username" target="_blank" class="btn secondary bounce">
+                                            <i class="fas fa-coffee"></i> Fuel My Next Security Project ☕
+                                        </a>
+                                    </div>
+                                    <p class="fun-fact">Fun fact: This "hack" was actually a demonstration of XSS prevention! 🎉</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
         <h2>Get in Touch</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+        <div class="contact-content">
+            <div class="social-links">
+                <a href="https://github.com/SecOpsGrogu1" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
-    </div>
+
+            <form action="https://formspree.io/f/xovqzoep" method="POST" class="contact-form">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="_replyto" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit" class="btn primary">Send Message</button>
+            </form>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2024 Paul Mulenga. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="js/contact.js"></script>
+    <script src="js/hack-game.js"></script>
 </body>
 </html>
